@@ -29,8 +29,15 @@
     </ul>
    </div>
   </div>
+  <script>
+    var list = document.getElementsByClassName('list-group-item');
+    list[2].style.backgroundColor = "green";
+    for(var i = 0; i< list.length; i++){
+      list[i].style.fontWeight = "bold";
+    }
+  </script>
   
-  <script src="new.js"></script>
+  <!-- <script src="new.js"></script> -->
 
 </body>
 </html>
