@@ -26,16 +26,31 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
-      <li>Item 5</li>
+      
     </ul>
    </div>
   </div>
   <script>
-    var list = document.getElementsByTagName('li');
-    list[2].style.backgroundColor = "green";
-    for(var i = 0; i< list.length; i++){
-      list[i].style.fontWeight = "bold";
-    }
+    // var header = document.querySelector('#main-header');
+    // header.style.borderBottom = '2px solid #ccc';
+
+    // var input = document.querySelector('input');
+    // input.value = 'hello wold';
+
+    // var submit = document.querySelector('input[type = "submit"]');
+    // submit.value = "send";
+
+    // var item = document.querySelector('.list-group-item');
+    // item.style.color = "red";
+
+    // var lastitem = document.querySelector('.list-group-item:last-child');
+    // lastitem.style.color = 'blue';
+
+    var nthitem = document.querySelector('.list-group-item:nth-child(2)');
+    nthitem.style.backgroundColor = 'green';
+    var nthhitem = document.querySelector('.list-group-item:nth-child(3)');
+    nthhitem.style.display = 'none';
+
   </script>
   
   <!-- <script src="new.js"></script> -->
