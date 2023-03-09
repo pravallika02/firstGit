@@ -31,10 +31,10 @@
         </form>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
-          <li class="list-group-item"><span>Item 1</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div></div></li>
-          <li class="list-group-item"><span>Item 2</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div></div></li>
-          <li class="list-group-item"><span>Item 3</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div></div></li>
-          <li class="list-group-item"><span>Item 4</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div></div></li>
+          <li class="list-group-item"><span class="id">Item 1</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">car</div></li>
+          <li class="list-group-item"><span class="id">Item 2</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">bike</div></li>
+          <li class="list-group-item"><span class="id">Item 3</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">cycle</div></li>
+          <li class="list-group-item"><span class="id">Item 4</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">ship</div></li>
         </ul>
       </div>
     </div>
@@ -129,13 +129,22 @@
           Array.from(items).forEach(function(item){
             var itemName = item.lastChild.textContent;
             var itemNames = item.firstChild.textContent;
-            var items = itemName+itemNames;
-            if(items.toLowerCase().indexOf(text) != -1){
+            var itemfull = itemName+itemNames;
+            if(itemfull.toLowerCase().indexOf(text) != -1){
               item.style.display = 'block';
             } else {
               item.style.display = 'none';
             }
           });
+        }
+
+        //local storage
+        var it1 = document.getElementsByClassName('id');
+        var it2 = document.getElementsByClassName('desc');
+        for(var i = 0 ; i<it1.length ; i++){
+          var key = it1[i].innerHTML;
+          var value = it2[i].innerHTML;
+          localStorage.setItem(key,value);
         }
         
       </script>
