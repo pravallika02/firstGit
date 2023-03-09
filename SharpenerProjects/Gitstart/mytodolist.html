@@ -31,10 +31,10 @@
         </form>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
-          <li class="list-group-item"><span class="id">Item 1</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">car</div></li>
-          <li class="list-group-item"><span class="id">Item 2</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">bike</div></li>
-          <li class="list-group-item"><span class="id">Item 3</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">cycle</div></li>
-          <li class="list-group-item"><span class="id">Item 4</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">ship</div></li>
+          <li class="list-group-item"><span class="idname">Item 1</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">car</div></li>
+          <li class="list-group-item"><span class="idname">Item 2</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">bike</div></li>
+          <li class="list-group-item"><span class="idname">Item 3</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">cycle</div></li>
+          <li class="list-group-item"><span class="idname">Item 4</span><button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-outline-success btn-sm float-right mr-2">Edit</button><div class="desc">ship</div></li>
         </ul>
       </div>
     </div>
@@ -70,7 +70,7 @@
 
           // Create div element
           var itemdes = document.createElement('span');
-          itemdes.className = 'id';
+          itemdes.className = 'idname';
       
           // Append text node
           itemdes.appendChild(document.createTextNode(newItem));
@@ -139,7 +139,7 @@
         }
 
         //local storage
-        var it1 = document.getElementsByClassName('id');
+        var it1 = document.getElementsByClassName('idname');
         var it2 = document.getElementsByClassName('desc');
         for(var i = 0 ; i<it1.length ; i++){
           var key = it1[i].innerHTML;
