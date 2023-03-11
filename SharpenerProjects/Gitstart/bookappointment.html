@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <label for="mail">MailID</label>
+        <input type="email" id="mail">
+        <label for="phnumber">Phone Number</label>
+        <input type="tel" id="phnumber">
+        <input type="submit" value="Submit" id="submit">
+    </form>
+    <ul id="uld">
+    </ul>
+    <script>
+        var sub = document.getElementById("form");
+        sub.addEventListener('submit', enterdetails);
+
+        var form = document.getElementById('uld');
+
+        function enterdetails(e){
+            e.preventDefault();
+
+            var li = document.createElement('li');
+            li.className = "listitem";
+
+            var namevalue = document.getElementById('name').value;
+            var mailvalue=document.getElementById('mail').value;
+            var phnumber = document.getElementById('phnumber').value;
+            const string = "name: "+namevalue+", mailid: "+mailvalue+", phonenumber: "+phnumber;
+            localStorage.setItem(mailvalue,string);
+            console.log(string);
+            li.appendChild(document.createTextNode(string));
+            form.appendChild(li);
+        }
+    </script>
+</body>
+</html>
