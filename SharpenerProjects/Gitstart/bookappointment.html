@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -30,14 +31,30 @@
             var li = document.createElement('li');
             li.className = "listitem";
 
+            var but =document.createElement('button');
+            but.appendChild(document.createTextNode('Delete'));
+            but.className = "btn btn-outline-secondary delete";
+
             var namevalue = document.getElementById('name').value;
             var mailvalue=document.getElementById('mail').value;
             var phnumber = document.getElementById('phnumber').value;
             const string = "name: "+namevalue+", mailid: "+mailvalue+", phonenumber: "+phnumber;
             localStorage.setItem(mailvalue,string);
-            console.log(string);
+            // console.log(string);
             li.appendChild(document.createTextNode(string));
+            li.appendChild(but);
             form.appendChild(li);
+        }
+
+        uld.addEventListener('click',dele);
+
+        function dele(e){
+          if(e.target.classList.contains('delete')){
+            if(confirm('Are You Sure?')){
+              var li = e.target.parentElement;
+              uld.removeChild(li);
+            }
+          }
         }
     </script>
 </body>
