@@ -60,6 +60,7 @@
           // Get input value
           var newItem = document.getElementById('item').value;
           var newItemdesc = document.getElementById('itemdesc').value;
+          localStorage.setItem(newItem,newItemdesc);
 
           // Create new li element
           var li = document.createElement('li');
@@ -107,6 +108,7 @@
         
           // Append li to list
           itemList.appendChild(li);
+
         }
         
         // Remove item
