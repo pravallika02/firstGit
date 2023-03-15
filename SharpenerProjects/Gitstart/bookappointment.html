@@ -17,7 +17,7 @@
         <input type="tel" id="phnumber">
         <input type="submit" value="Submit" id="submit">
     </form>
-    <ul id="uld">
+    <ul id="uld" class="item">
     </ul>
     <script>
         var sub = document.getElementById("form");
@@ -31,30 +31,57 @@
             var li = document.createElement('li');
             li.className = "listitem";
 
+            var namevalue=document.getElementById('name').value;
+            var mailvalue=document.getElementById('mail').value;
+            var phnumber = document.getElementById('phnumber').value;
+            const str = {
+                thename:namevalue,
+                mailid:mailvalue,
+                phone_number:phnumber
+            }; 
+            var string1 = JSON.stringify(str);
+            localStorage.setItem(mailvalue,string1);
+            var temp = document.createTextNode(string1);
+            li.appendChild(temp);
+
             var but =document.createElement('button');
             but.appendChild(document.createTextNode('Delete'));
             but.className = "btn btn-outline-secondary delete";
-
-            var namevalue = document.getElementById('name').value;
-            var mailvalue=document.getElementById('mail').value;
-            var phnumber = document.getElementById('phnumber').value;
-            const string = "name: "+namevalue+", mailid: "+mailvalue+", phonenumber: "+phnumber;
-            localStorage.setItem(mailvalue,string);
-            // console.log(string);
-            li.appendChild(document.createTextNode(string));
             li.appendChild(but);
+
+            var edit =document.createElement('button');
+            edit.appendChild(document.createTextNode('Edit'));
+            edit.className = "btn btn-outline-secondary";
+            li.appendChild(edit);
+
             form.appendChild(li);
+
+            document.getElementById('name').value="";
+            document.getElementById('mail').value="";
+            document.getElementById('phnumber').value="";
         }
 
         uld.addEventListener('click',dele);
 
         function dele(e){
-          if(e.target.classList.contains('delete')){
-            if(confirm('Are You Sure?')){
-              var li = e.target.parentElement;
-              uld.removeChild(li);
+            var li = e.target.parentElement;
+            const data = li.textContent;
+            let newText = data.replace("DeleteEdit", "");
+            const obj = JSON.parse(newText);
+
+            if(e.target.classList.contains('delete')){
+                if(confirm('Are You Sure?')){
+                    uld.removeChild(li);
+                    localStorage.removeItem(obj.mailid);
+                }
             }
-          }
+            else{
+                document.getElementById('name').value=obj.thename;
+                document.getElementById('mail').value=obj.mailid;
+                document.getElementById('phnumber').value=obj.phone_number;
+                uld.removeChild(li);
+                localStorage.removeItem(obj.mailid);
+            }
         }
     </script>
 </body>
