@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <div class="form-check form-inline">
+            <label for="amount" class="form-label">Choose expenseamount</label>
+            <input type="text" id="amount" class="form-control">
+            <label for="desc" class="form-label">Choose description</label>
+            <input type="text" id="desc" class="form-control">
+            <label for="category" class="form-label">Choose category</label>
+            <select name="Choose category" id="category" class="custom-select dropdown-toggle">
+                <option value="movie">movie</option>
+                <option value="diesel">diesel</option>
+                <option value="medicines">medicines</option>
+                <option value="daily routine">daily routine</option>
+            </select>
+            <input type="submit" value="Add Expense" id="submit" class="">
+        </div>
+    </form>
+    <ul id="uld" class="item"></ul>
+    <script>
+        var sub = document.getElementById("form");
+        sub.addEventListener('submit', enterdetails);
+
+        var form = document.getElementById('uld');
+
+        function enterdetails(e){
+            e.preventDefault();
+
+            var li = document.createElement('li');
+            li.className = "listitem";
+
+            var amountvalue=document.getElementById('amount').value;
+            var descvalue=document.getElementById('desc').value;
+            var cattype = document.getElementById('category').value;
+            const str = {
+                amount:amountvalue,
+                description:descvalue,
+                categorytype:cattype
+            }; 
+            var string1 = JSON.stringify(str);
+            // let ourstring = namevalue + " - "+phnumber + " - " +mailvalue;
+            localStorage.setItem(descvalue,string1);
+            var temp = document.createTextNode(string1);
+            li.appendChild(temp);
+
+            var but =document.createElement('button');
+            but.appendChild(document.createTextNode('Delete Expense'));
+            but.className = "btn btn-outline-secondary delete";
+            li.appendChild(but);
+
+            var edit =document.createElement('button');
+            edit.appendChild(document.createTextNode('Edit Expense'));
+            edit.className = "btn btn-outline-secondary";
+            li.appendChild(edit);
+
+            form.appendChild(li);
+
+            document.getElementById('amount').value="";
+            document.getElementById('desc').value="";
+            document.getElementById('category').value="";
+        }
+
+        uld.addEventListener('click',dele);
+
+        function dele(e){
+            var li = e.target.parentElement;
+            const data = li.textContent;
+            let newText = data.replace("Delete ExpenseEdit Expense", "");
+            const obj = JSON.parse(newText);
+
+            if(e.target.classList.contains('delete')){
+                if(confirm('Are You Sure?')){
+                    uld.removeChild(li);
+                    localStorage.removeItem(obj.description);
+                }
+            }
+            else{
+                document.getElementById('amount').value=obj.amount;
+                document.getElementById('desc').value=obj.description;
+                document.getElementById('category').value=obj.categorytype;
+                uld.removeChild(li);
+                localStorage.removeItem(obj.description);
+            }
+        }
+    </script>
+</body>
+</html>
